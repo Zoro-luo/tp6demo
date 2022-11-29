@@ -1,0 +1,51 @@
+{extend name="public/base"}
+
+{block name="title"}修改管理员{/block}
+
+
+{block name="main"}
+<!--添加用户UI  -->
+<form action="{:url('/auth/'.$auth.id)}" method="post">
+    <input type="hidden" value="put" name="_method">
+    <fieldset class="w-75">
+        <div class="form-group row">
+            <label for="name" name="name" class="col-2 col-form-label">管理员</label>
+            <div class="col-8">
+                <input type="text"  name="name" value="{$auth.name}" id="name" class="form-control"  >
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label for="newpassword" class="col-2 col-form-label">新密码</label>
+            <div class="col-8">
+                <input type="password" name="password" id="newpassword" class="form-control" placeholder="请输入密码">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label name="" class="col-2 col-form-label">权限范围</label>
+            <div class="col-8">
+               {volist name="role" id="obj"}
+                <label for="{$obj.id}">
+                    <input type="checkbox" id="{$obj.id}" name="role[]" value="{$obj.id}">
+                    <span  class="col-form-label-sm">{$obj.type}</span>
+                </label>
+                {/volist}
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label"></label>
+            <div class="col-8">
+                <input type="hidden" value="{:token()}" name="__token__">
+                <button class="btn btn-success w-100">修改资料</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+{/block}

@@ -1,0 +1,62 @@
+{extend name="public/base"}
+
+{block name="title"}修改资料{/block}
+
+
+{block name="main"}
+<!--添加用户UI  -->
+<form action="{:url('/user/'.$obj.id)}" method="post">
+    <input type="hidden" value="put" name="_method">
+    <fieldset class="w-75">
+        <div class="form-group row">
+            <label for="username" name="username" class="col-2 col-form-label">用户名</label>
+            <div class="col-8">
+                <input type="text" disabled name="username" value="{$obj.username}" id="username" class="form-control"  >
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label">性别</label>
+            <div class="col-8">
+                <label for="man" class="col-form-label">
+                    <input type="radio" name="gender" id="man" value="男" {$obj.gender == '男' ? 'checked' : ''} > 男
+                </label>
+                <label for="woman" class="col-form-label">
+                    <input type="radio" name="gender" id="woman" value="女" {$obj.gender == '女' ? 'checked' : ''} > 女
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" name="email" class="col-2 col-form-label">邮箱</label>
+            <div class="col-8">
+                <input type="text" name="email" disabled value="{$obj.email}" id="email" class="form-control" >
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label for="hobby" name="content" class="col-2 col-form-label">喜好</label>
+            <div class="col-8">
+                <input type="text" name="content" id="hobby" disabled class="form-control" value="{$obj.hobby.content}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label">状态</label>
+            <div class="col-6">
+                <div class="">
+                    <input type="text" name="status" id="status" disabled class="form-control" value="{$obj.status}">
+                </div>
+            </div>
+            <div class="col-2 text-right col-form-label">
+                <a href="{:url('/user')}" class="col-form-label-sm">返回列表</a>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+{/block}

@@ -1,0 +1,50 @@
+{extend name="public/base"}
+
+{block name="title"}修改资料{/block}
+
+
+{block name="main"}
+<!--添加用户UI  -->
+<form action="{:url('/hobby/'.$obj.id)}" method="post">
+    <input type="hidden" value="put" name="_method">
+    <fieldset class="w-75">
+        <div class="form-group row">
+            <label for="username" name="username" class="col-2 col-form-label">用户名</label>
+            <div class="col-8">
+                <input type="text" disabled name="username" value="{$obj.user.username}" id="username" class="form-control"  >
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label for="email" name="email" class="col-2 col-form-label">邮箱</label>
+            <div class="col-8">
+                <input type="text" name="email" disabled value="{$obj.user.email}" id="email" class="form-control" >
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label for="hobby" name="content" class="col-2 col-form-label">喜好</label>
+            <div class="col-8">
+                <input type="text" name="content"  value="{$obj.content}" id="hobby" class="form-control" >
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label"></label>
+            <div class="col-6">
+                <input type="hidden" value="{:token()}" name="__token__">
+                <button class="btn btn-success w-100">修改资料</button>
+            </div>
+            <div class="col-2 text-right col-form-label">
+                <a href="{:url('/hobby')}" class="col-form-label-sm">返回列表</a>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+{/block}

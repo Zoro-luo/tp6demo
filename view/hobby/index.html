@@ -1,0 +1,82 @@
+{extend name="public/base"}
+
+{block name="title"}用户列表{/block}
+
+{block name="main"}
+<!--搜索表单  -->
+<form action="{:url('/hobby')}" class="pb-2">
+  <div class="form-row">
+    <div class="col-form-label">
+      <label for="content">用户名:</label>
+    </div>
+    <div class="col-4">
+      <input type="text" id="content" name="content" class="form-control" placeholder="查询的喜好">
+    </div>
+
+    <div class="col-auto">
+      <button class="btn btn-primary">搜索</button>
+     <!-- <a href="{:url('/hobby/create')}" class="btn btn-success">添加用户</a>-->
+    </div>
+  </div>
+</form>
+
+<!--数据列表-->
+<table class="table table-bordered">
+  <thead class="thead-light">
+  <tr>
+    <th class="text-center">ID</th>
+    <th class="text-center">用户名</th>
+    <th class="text-center">性别</th>
+    <th class="text-center">邮箱</th>
+    <th class="text-center">喜好</th>
+    <th class="text-center">操作</th>
+  </tr>
+  </thead>
+  <tdody>
+    {assign name="empty" value='
+    <tr>
+      <td colspan="7" class="text-center text-muted">没有数据</td>
+    </tr>
+    '}
+    {volist name="list" id="obj" empty="$empty"}
+    <tr>
+      <td class="text-center">{$obj.user.id}</td>
+      <td data-toggle="tooltip" data-placement="right" title="{$obj.content}">{$obj.user.username}</td>
+      <td class="text-center">{$obj.user.gender}</td>
+      <td>{$obj.user.email}</td>
+      <td class="text-center">
+        <span class="badge btn-{$obj.badge}">{$obj.content}</span>
+      </td>
+      <td class="text-center">
+        <form action="{:url('/hobby/'.$obj.id)}" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button class="btn btn-danger btn-sm btn-delete">删除</button>
+          <a href="{:url('/hobby/'.$obj.id.'/edit')}" class="btn btn-warning btn-sm">修改</a>
+        </form>
+      </td>
+    </tr>
+    {/volist}
+  </tdody>
+</table>
+<!--  分页 -->
+<ul class="pagination">
+  <!--<li class="page-item active">
+         <a href="" class="page-link">1</a>
+     </li>-->
+  {$list|raw}
+</ul>
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+  $('.btn-delete').click(() => {
+    let flag = confirm("您真的要删除这条数据?");
+    return flag ? true : false;
+  })
+
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="tooltip"]').click(()=>{
+    location.href = "{:url('/hobby/'.$obj.id)}"
+  })
+</script>
+{/block}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TP6.0Demo -- 登录</title>
+    <!-- 引入 Bootstrap CSS -->
+    {css href="__CSS__/bootstrap.min.css"}
+    {css href="__CSS__/style.css"}
+
+    <!-- 移动设备优先 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+<!--登录UI-->
+<div class="d-flex justify-content-center align-items-center vw-100 vh-100">
+    <form action="{:url('/login_check')}" method="post" class="p-5 m-5 shadow">
+        <fieldset>
+            <div class="form-group row">
+                <label for="name" class="col-4 col-form-label text-right">管理员</label>
+                <div class="col-6">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="请输入管理员">
+                </div>
+                <span class="col-2 text-danger col-form-label">*</span>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-4 col-form-label text-right">密码</label>
+                <div class="col-6">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="请输入管理员密码">
+                </div>
+                <span class="col-2 text-danger col-form-label">*</span>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label" style="position: relative;top:-10px;">{:captcha_img()}</label>
+                <div class="col-6">
+                    <input type="text" id="code" name="code" class="form-control" placeholder="请输入验证码">
+                </div>
+                <span class="col-2 text-danger col-form-label">*</span>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label"></label>
+                <div class="col-8">
+                    <input type="hidden" value="{:token()}" name="__token__">
+                    <button class="btn btn-success w-100">登录</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+<!-- 引入 JS 文件 -->
+{js href="__JS__/jquery-3.3.1.min.js"}
+{js href="__JS__/bootstrap.bundle.min.js"}
+</body>
+</html>

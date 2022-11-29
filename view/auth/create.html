@@ -1,0 +1,63 @@
+{extend name="public/base"}
+
+{block name="title"}创建管理{/block}
+
+
+
+{block name="main"}
+<!--添加管理UI  -->
+<form action="{:url('/auth')}" method="post">
+    <fieldset class="w-75">
+        <div class="form-group row">
+            <label for="name" name="name" class="col-2 col-form-label">管理员</label>
+            <div class="col-8">
+                <input type="text" name="name" id="name" class="form-control" placeholder="请输入管理员!">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="password" name="password" class="col-2 col-form-label">密码</label>
+            <div class="col-8">
+                <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码!">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+
+        <div class="form-group row">
+            <label name="password" class="col-2 col-form-label">权限范围</label>
+            <div class="col-8">
+                {volist name="list" id="obj"}
+                <label for="{$obj.id}">
+                    <input type="checkbox" id="{$obj.id}" name="role[]" value="{$obj.id}">
+                    <span  class="col-form-label-sm">{$obj.type}</span>
+                </label>
+                {/volist}
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label"></label>
+            <div class="col-6">
+              ...
+            </div>
+
+            <div class="col-2 text-right">
+                <a href="{:url('/auth')}" class="col-form-label-sm">返回列表</a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label"></label>
+            <div class="col-8">
+                <input type="hidden" value="{:token()}" name="__token__">
+                <button class="btn btn-success w-100">添加管理</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+{/block}

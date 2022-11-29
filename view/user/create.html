@@ -1,0 +1,88 @@
+{extend name="public/base"}
+
+{block name="title"}添加用户{/block}
+
+
+
+{block name="main"}
+<!--添加用户UI  -->
+<form action="{:url('/user')}" method="post">
+    <fieldset class="w-75">
+        <div class="form-group row">
+            <label for="username" name="username" class="col-2 col-form-label">用户名</label>
+            <div class="col-8">
+                <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名!">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" name="password" class="col-2 col-form-label">密码</label>
+            <div class="col-8">
+                <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码!">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label for="passwordnot" name="passwordnot" class="col-2 col-form-label">密码确认</label>
+            <div class="col-8">
+                <input type="password" name="passwordnot" id="passwordnot" class="form-control" placeholder="请输入密码确认!">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label">性别</label>
+            <div class="col-8">
+                <label for="man" class="col-form-label">
+                    <input type="radio" name="gender" id="man" value="男" checked> 男
+                </label>
+                <label for="woman" class="col-form-label">
+                    <input type="radio" name="gender" id="woman" value="女"> 女
+                </label>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label for="email" name="email" class="col-2 col-form-label">邮箱</label>
+            <div class="col-8">
+                <input type="text" name="email" id="email" class="form-control" placeholder="请输入邮箱!">
+            </div>
+            <span class="col-2 text-danger col-form-label">*</span>
+        </div>
+
+        <div class="form-group row">
+            <label for="hobby" name="content" class="col-2 col-form-label">喜好</label>
+            <div class="col-8">
+                <input type="text" name="content" id="hobby" class="form-control" placeholder="请输入你的喜好？">
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label"></label>
+            <div class="col-6">
+                <label for="agree" class="col-form-label-sm">
+                    <input type="checkbox" name="agree" id="agree"  > 我已同意看视频不喷老师的协议!
+                </label>
+            </div>
+
+            <div class="col-2 text-right">
+                <a href="{:url('/user')}" class="col-form-label-sm">返回列表</a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-2 col-form-label"></label>
+            <div class="col-8">
+                <input type="hidden" value="{:token()}" name="__token__">
+                <button class="btn btn-success w-100">添加用户</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+{/block}

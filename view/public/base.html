@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TP6Demo -- {block name="title"}{/block}</title>
+  <!-- 引入 Bootstrap CSS -->
+  {css href="__CSS__/bootstrap.min.css"}
+  {css href="__CSS__/style.css"}
+  <!-- 移动设备优先 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1,
+shrink-to-fit=no">
+  <!-- 引入 JS 文件 -->
+  {js href="__JS__/jquery-3.3.1.min.js"}
+  {js href="__JS__/bootstrap.bundle.min.js"}
+
+</head>
+<body>
+<!--导航-->
+<nav class="navbar navbar-light bg-light shadow-sm p-1">
+  <a href="#"></a>
+  <div class="nav-item dropdown mr-5">
+    <a href="#" class="dropdown-toggle nav-link text-secondary" data-toggle="dropdown">{:session('admin')}</a>
+    <div class="dropdown-menu">
+      <a href="#" class="dropdown-item">个人中心</a>
+      <a href="{:url('/logout')}" class="dropdown-item">退出管理</a>
+    </div>
+  </div>
+</nav>
+
+
+<!--核心部分-->
+<div class="container pt-5 mt-5">
+  <div class="row ">
+    <div class="col-3 sidebar">
+      <button class="btn btn-secondary user">用户管理</button>
+      <button class="btn btn-secondary hobby">喜好管理</button>
+      <button class="btn btn-secondary repeat">书籍管理</button>
+      <button class="btn btn-secondary role">角色管理</button>
+      <button class="btn btn-secondary auth">权限管理</button>
+    </div>
+    <div class="col-9 main">
+
+      {block name="main"}{/block}
+
+    </div>
+  </div>
+</div>
+
+{block name="js"}{/block}
+<script>
+    $('.hobby').click(()=>{
+      location.href = "./hobby.html"
+    })
+
+    $('.user').click(()=>{
+        location.href = "./user.html"
+    })
+
+    $('.auth').click(()=>{
+      location.href = "./auth.html"
+    })
+    $('.role').click(()=>{
+      location.href = "./role.html"
+    })
+
+</script>
+</body>
+</html>

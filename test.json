@@ -1,0 +1,28 @@
+{
+  "id": 6,
+  "name": "李白",
+  "password": "7c4a8d09ca3762af61e59520943dc26494f8941b",
+  "roles": 1,
+  "role": [
+    {
+      "id": 3,
+      "type": "用户新增",
+      "uri": "User\/create,User\/save",
+      "pivot": {
+        "id": 8,
+        "auth_id": 6,
+        "role_id": 3
+      }
+    },
+    {
+      "id": 4,
+      "type": "用户修改",
+      "uri": "User\/edit,User\/udpate",
+      "pivot": {
+        "id": 9,
+        "auth_id": 6,
+        "role_id": 4
+      }
+    }
+  ]
+}
