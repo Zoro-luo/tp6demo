@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TP6Demo -- 角色列表</title>
+    <title>TP6Demo -- 角色列表1</title>
     <!-- 引入 Bootstrap CSS -->
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/style.css">
@@ -16,15 +16,13 @@
 <nav class="navbar navbar-light bg-light shadow-sm p-1">
     <a href="#"></a>
     <div class="nav-item dropdown mr-5">
-        <a href="#" class="dropdown-toggle nav-link text-secondary" data-toggle="dropdown"><?php echo $admin ?></a>
+        <a href="#" class="dropdown-toggle nav-link text-secondary" data-toggle="dropdown"><?=$admin?></a>
         <div class="dropdown-menu">
             <a href="#" class="dropdown-item">个人中心</a>
             <a href="/logout" class="dropdown-item">退出管理</a>
         </div>
     </div>
 </nav>
-
-
 <!--核心部分-->
 <div class="container pt-5 mt-5">
     <div class="row align-items-center">
